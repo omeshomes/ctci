@@ -1,0 +1,34 @@
+'''
+Is input string a permutation of a palindrome?
+
+Q: How are spaces handled? Any other chars that are treated differently?
+A: only counting letters of alphabet (use .isalpha())
+
+Potential improvement: use boolean instead of counting number of occurences. We don't need to know the actual number.
+'''
+
+def is_palindrome_perm(str):
+  count_dict = {}
+  lowered = str.lower()
+
+  for letter in lowered:
+    if letter.isalpha():
+      if count_dict.get(letter):
+        count_dict[letter] += 1
+      else:
+        count_dict[letter] = 1
+
+  has_odd = False
+  for key in count_dict:
+    if (count_dict[key] % 2) != 0:
+      if has_odd:
+        return False
+      has_odd = True
+
+  return True
+
+print is_palindrome_perm('Tact Coa')
+print is_palindrome_perm('racecra')
+print is_palindrome_perm('a')
+print is_palindrome_perm('')
+print is_palindrome_perm('chicken')

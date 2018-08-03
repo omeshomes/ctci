@@ -1,0 +1,26 @@
+'''
+String Compression: compress a string
+
+'''
+
+def compress_string(string):
+  compressed = []
+  cur_count = 0
+
+  for i in range(0, len(string)):
+    cur_count += 1
+
+    if (i + 1 >= len(string)) or (string[i] != string[i + 1]):
+      compressed.append(string[i] + str(cur_count))
+      cur_count = 0
+
+  final = ''.join(compressed)
+  if len(final) < len(string):
+    return final
+  return string
+
+
+
+print compress_string('aabcccccaaa')
+print compress_string('abcde')
+print compress_string('aab')

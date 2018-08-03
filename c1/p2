@@ -1,0 +1,31 @@
+'''
+Notes:
+Didn't think to ask about case sensitivity and whitespace.
+Don't assume the input will be tailored to what makes most sense.
+'''
+
+def is_perm(str1, str2):
+  ref_dict = {}
+
+  for letter in str1:
+    if ref_dict.get(letter):
+      ref_dict[letter] +=1
+    else:
+      ref_dict[letter] = 1
+
+  for letter in str2:
+    if not ref_dict.get(letter):
+      return False
+    else: 
+      ref_dict[letter] -= 1
+
+  for key in ref_dict.keys():
+    if ref_dict[key] != 0:
+      return False
+
+  return True
+
+print is_perm('racecar', 'racecar')
+print is_perm('nagaram', 'anagram')
+print is_perm('hello', 'bye')
+print is_perm('', '')

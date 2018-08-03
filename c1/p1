@@ -1,0 +1,14 @@
+def isUnique(word):
+  dict = {}
+  for char in word:
+    if dict.get(char):
+      print False
+      return False
+    dict[char] = 1
+  print True
+  return True
+
+isUnique('hello') # False
+isUnique('abcd') # True
+isUnique('') # True
+isUnique('1234') # True

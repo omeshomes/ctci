@@ -1,0 +1,29 @@
+'''
+URLify - replace spaces in string with '%20'. Assume buffer at end of string and count of True Length.
+
+Notes: forgot to use True Lenght (use all info in problem!)
+Should ask about space constraints.
+'''
+
+def urlify(str):
+  str = list(str)
+  length = len(str)
+  trail = 1
+  while str[length - trail] == ' ':
+    trail += 1
+  x = 1
+  y = trail 
+  while x != length:
+    if str[length - y] == ' ':
+      str[length - x - 2] = '%'
+      str[length - x - 1] = '2'
+      str[length - x] = '0'
+      x += 2
+    else:
+      non_space = str[length - y]
+      str[length - x] = non_space
+    x += 1
+    y += 1
+  return ''.join(str)
+
+print urlify('Mr John Smith    ')

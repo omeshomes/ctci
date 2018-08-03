@@ -1,0 +1,31 @@
+'''
+Zero Matrix: if an element in MXN matrix is 0, it's entire row and column are set to 0
+
+Note: CTCI modularizes this by defining functions for nullify_row and nullify_column. Could be cleaner.
+'''
+
+def zero(matrix):
+  m = len(matrix)
+  n = len(matrix[0])
+  zero_rows = []
+  zero_columns = []
+
+  for i in range(m):
+    for j in range(n):
+      if matrix[i][j] == 0:
+        zero_rows.append(i)
+        zero_columns.append(j)
+
+  for a in zero_rows:
+    for x in range(n):
+      matrix[a][x] = 0
+
+  for b in zero_columns:
+    for y in range(m):
+      matrix[y][b] = 0
+
+  return matrix
+
+test = [[1, 2], [0, 3]]
+
+print zero(test)
