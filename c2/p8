@@ -1,0 +1,24 @@
+""" Loop Detection
+
+Ideas: Use a hash table to find element at which first repeat happens
+"""
+
+def detect_loop(node):
+  fast, slow = node
+
+  while fast and slow:
+    fast = node.next.next
+    slow = node.next
+    if fast == slow:
+      break
+
+  if not fast or not slow:
+    return None
+
+  fast = node
+
+  while fast != slow:
+    fast = fast.next
+    slow = slow.next
+
+  return fast

@@ -1,0 +1,14 @@
+'''
+Rotate Matrix: rotate a matrix 90 degrees. can you do it in place?
+'''
+
+def rotate_matrix(M):
+  N = len(M)
+  new_M = [[0 for x in range(N)] for y in range(N)]
+
+  for i in range(N):
+    for j in range(N):
+      new_M[j][N-i] = M[i][j]
+
+  return new_M
+

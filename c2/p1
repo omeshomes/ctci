@@ -1,0 +1,35 @@
+""" Remove Dups: remove duplicates from linked list
+
+Can do in O(N) time with buffer (hash table), but without buffer can do O(N^2) with runner.
+"""
+
+def remove_dups(linked_list):
+  ref = {}
+  n = linked_list.head
+
+  if not n:
+    return
+
+  while n.next:
+    if ref.get(n.next.val):
+      n.next = n.next.next
+    else:
+      ref[n.next.val] = 1
+      n = n.next
+
+
+Learning: Python Set - Unordered collections of unique elements. (similar to dict w/o values). hashed, so good for **membership testing**
+
+def remove_dups(linked_list):
+  ref = set()
+  n = linked_list.head
+
+  if not n:
+    return
+
+  while n.next:
+    if n.next.val in ref:
+      n.next = n.next.next
+    else:
+      ref.add(n.next.val)
+      n = n.next

@@ -1,0 +1,23 @@
+""" Return Kth to Last
+
+Could also have used recursion to keep track of where we are with respect to the end of linked list. But that takes O(n) space.
+"""
+
+def kth_to_last(linked_list_node):
+  runner = linked_list_node
+
+  for i in range(k-1):
+    # list of length < k
+    if not runner.next:
+      return
+    runner = runner.next
+
+  runner = runner.next
+  n = linked_list_node
+
+  while runner.next:
+    runner = runner.next
+    n = n.next
+
+  return n
+

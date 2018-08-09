@@ -1,0 +1,37 @@
+""" Intersection
+
+Determine if two linked lists intersect
+
+Easy solution in O(A+B) time and O(A+B) space with hash table. How about O(1) space? See below.
+"""
+
+def linked_len(node):
+  runner = node
+
+  count = 0
+  while runner:
+    count += 1
+    runner = runner.next
+
+  return count
+
+def intersect(node1, node2):
+  len1 = linked_len(node1)
+  len2 = linked_len(node2)
+
+  long = node1 if (len1 >= len2) else node2
+  short = node1 if (len1 < len2) else node2
+
+  for i in range(abs(len1 - len2)):
+    long = long.next
+
+  while long and short:
+    if long == short:
+      return long
+    long = long.next
+    short = short.next
+
+  return False
+
+
+  

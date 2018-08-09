@@ -1,0 +1,45 @@
+"""palindrome
+
+implement a function to check if linked list is palindrome
+"""
+
+def reverse_list(node):
+  runner = node
+  prev = None
+
+  while runner:
+    runner.next = prev
+    prev = runner
+    runner = runner.next
+
+  return prev
+
+def copy_list(node):
+  runner = node
+  list_start = Node(runner.val)
+  list_end = list_start
+
+  runner = runner.next
+
+  while runner:
+    new_node = Node(runner.val)
+    list_end.next = new_node
+    list_end = new_node
+    runner = runner.next
+
+  return list_start
+
+
+def is_palindrome(node):
+  copy_node = reverse_list(copy_list(node))
+
+  node1 = node
+  node2 = copy_node
+
+  while node1 and node2:
+    if node1.val != node2.val:
+      return False
+    node1 = node1.next
+    node2 = node2.next
+
+  return (not node1 and not node2)

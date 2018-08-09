@@ -1,0 +1,10 @@
+""" Delete Middle Node
+
+delete a node in the middle of a singly linked list, given only access to that node
+
+Feedback: do error handling when you're finished
+"""
+
+def delete_middle_node(node):
+  node.val = node.next.val
+  node.next = node.next.next

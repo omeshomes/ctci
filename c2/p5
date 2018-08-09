@@ -1,0 +1,31 @@
+""" sum lists
+
+sum two numbers stored as linked lists, returning result as linked list
+"""
+
+def sum_lists_reverse(node1, node2):
+  result = None
+  runner1 = node1
+  runner2 = node2
+  carry = 0
+
+  while runner1 or runner2 or carry:
+    addend_1 = runner1.val if runner1 else 0
+    addend_2 = runner2.val if runner2 else 0
+    digit_sum = carry + addend_1 + addend_2
+
+    if digit_sum >= 10:
+      carry = 1
+      digit_sum -= 10
+    else:
+      carry = 0
+
+    new_node = Node(digit_sum)
+    new_node.next = result
+    result = new_node
+
+  return result
+
+
+def sum_lists_forward(node1, node2):
+  
